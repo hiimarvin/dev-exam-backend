@@ -1,62 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Built with
+* [Laravel Sail](https://laravel.com/docs/8.x/sail)
+* [Docker](https://www.docker.com/)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Pre-requisites
+You will only need [Docker](https://www.docker.com/) to run the application. Related installation instructions can be seen [here](https://docs.docker.com/docker-for-windows/install/). Please make sure that the following ports are free to use:
+* 8081 - is used by the REST API application server
+* 8082 - is used by Laravel
+* 8083 - is used by MySQL
 
-## About Laravel
+# Usage
+1. Open a command line terminal on the project directory and execute the following:
+   ```
+   docker-compose up
+   ```
+2. Wait until `composer` finishes installing the required dependencies and base images are done building.
+3. You may check if Laravel is running on http://localhost:8082/ and if the REST API application is running on http://localhost:8081/.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Available APIs
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Laravel
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **GET** `<Laravel base URL>/api/httpRes`
+* URL Params
 
-## Learning Laravel
+  None
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Data Params
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  None
 
-## Laravel Sponsors
+* Success Response
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+  Code: 200 </br>
+  Content:
+    ```json
+    [
+      {
+        "date_time": "...",
+        "http_res": "..."
+      },
+      ...
+    ]
+    ```
 
-### Premium Partners
+### **POST** `<Laravel base URL>/api/httpRes/store`
+* URL Params
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+  None
 
-## Contributing
+* Data Params
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  ```json
+  {
+    "date_time": "...",
+    "http_res": "..."
+  }
+  ```
 
-## Code of Conduct
+* Success Response
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+  Code: 200
 
-## Security Vulnerabilities
+## REST API application
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **GET** `<REST API base URL>/`
+* URL Params
 
-## License
+  None
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* Data Params
+
+  None
+
+* Success Response
+
+  Code: 200
+  Content:
+  ```
+  REST API server is up
+  ```
+
+### **GET** `<REST API base URL>/datetime`
+* URL Params
+
+  None
+
+* Data Params
+
+  None
+
+* Success Response
+
+  Code: 200 </br>
+  Content:
+    ```json
+    {
+      "date_time": "..."
+    }
+    ```

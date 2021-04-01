@@ -1,0 +1,47 @@
+Available APIs
+
+Laravel
+
+  GET <Laravel base URL>/api/httpRes
+  - URL Params: None
+  - Data Params: None
+  - Success Response
+    Code: 200 
+    Content: JSON
+      [
+        {
+          "date_time": "...",
+          "http_res": "..."
+        },
+        ...
+      ]
+
+  POST <Laravel base URL>/api/httpRes/store
+  - URL Params: None
+  - Data Params: JSON
+    {
+      "date_time": "...",
+      "http_res": "..."
+    }
+  - Success Response
+    Code: 200
+
+REST API application
+
+  GET <REST API base URL>/
+  - URL Params: None
+  - Data Params: None
+  - Success Response
+    Code: 200
+    Content: REST API server is up
+  
+  GET <REST API base URL>/datetime
+  - URL Params: None
+  - Data Params: None
+  - Success Response
+    Code: 200 
+    Content: JSON
+    {
+      "date_time": "..."
+    }
+    
