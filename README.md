@@ -17,7 +17,7 @@ You will only need [Docker](https://www.docker.com/) to run the application. Rel
 3. You may check if Laravel is running on http://localhost:8082/ and if the REST API application is running on http://localhost:8081/.
 
 # Available APIs
-
+Also available in `.txt` version located at `API-docs.txt`
 ## Laravel
 
 ### **GET** `<Laravel base URL>/api/httpRes`
