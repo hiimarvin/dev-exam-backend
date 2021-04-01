@@ -7,6 +7,15 @@ app.listen(
   () => console.log(`REST API server alive at http://localhost:${PORT}`)
 );
 
+// API for health checks
+app.get('/', (req, res) => {
+  res
+    .status(200)
+    .header("Access-Control-Allow-Origin", "*")
+    .send("REST API server is up");
+});
+
+// Date-time API
 app.get('/datetime', (req, res) => {
   res
     .status(200)
