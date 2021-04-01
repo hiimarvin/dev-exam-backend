@@ -30,7 +30,7 @@ services:
       - sail
     ports:
       - '${REST_API_SERVER_PORT:-8081}:8081'
-    command: 'node .'
+    entrypoint: 'bash -c "npm install && node ."'
     healthcheck:
       test: 'curl localhost:8081'
 
